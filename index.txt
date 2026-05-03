@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroHub - Courses Library</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+
+    <div id="landingView">
+        <nav class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fa-solid fa-microchip text-indigo-500 text-2xl"></i>
+                    <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">ElectroHub</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                    <a href="#projects" class="hover:text-indigo-400 transition">Projects</a>
+                    <a href="#tutoring" class="hover:text-indigo-400 transition">1-on-1 Tutoring</a>
+                    <a href="#code-request" class="hover:text-indigo-400 transition">Custom Code</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="openModal('loginModal')" class="text-sm font-medium text-slate-300 hover:text-white transition">Log In</button>
+                    <button onclick="openModal('signupModal')" class="bg-indigo-600 hover:bg-indigo-500 text-sm font-medium px-4 py-2 rounded-lg shadow transition">Sign Up</button>
+                </div>
+            </div>
+        </nav>
+
+        <section class="max-w-7xl mx-auto px-6 py-20 lg:py-28 flex flex-col lg:flex-row items-center justify-between gap-12">
+            <div class="max-w-2xl text-center lg:text-left">
+                <span class="text-xs inline-block uppercase tracking-wider text-indigo-400 font-bold bg-indigo-500/10 px-3 py-1 rounded-full mb-4 border border-indigo-500/20">ESP & Raspberry Pi Academy</span>
+                <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-none mb-6">
+                    Master Embedded Systems <br>
+                    <span class="bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">From Concept to Code</span>
+                </h1>
+                <p class="text-lg text-slate-400 mb-8 max-w-xl">
+                    Access curated electronics schematics, request custom micro-controller code tailored for your project, or book a live debugging session with an expert.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#projects" class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-8 py-4 rounded-xl shadow-lg shadow-indigo-500/25 transition-all transform hover:-translate-y-0.5">
+                        Explore Premium Projects
+                    </a>
+                    <button onclick="document.getElementById('videoSection').scrollIntoView({behavior: 'smooth'})" class="flex items-center justify-center gap-2 border border-slate-700 bg-slate-900/50 hover:bg-slate-800 font-medium px-8 py-4 rounded-xl transition">
+                        <i class="fa-solid fa-circle-play text-cyan-400"></i> Watch Introduction
+                    </button>
+                </div>
+            </div>
+            <div class="relative w-full max-w-md aspect-video lg:aspect-auto h-72 bg-gradient-to-tr from-indigo-900 via-slate-900 to-cyan-900 rounded-3xl border border-slate-800 flex items-center justify-center p-6 shadow-2xl">
+                <div class="text-center">
+                    <i class="fa-solid fa-bolt text-5xl text-amber-400 animate-pulse mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Build IoT Solutions</h3>
+                    <p class="text-sm text-slate-400 max-w-xs mx-auto">Access 50+ custom sensor construction paths and hardware libraries.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="videoSection" class="bg-slate-900/40 border-y border-slate-900 py-20">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-4">See the Platform in Action</h2>
+                <p class="text-slate-400 mb-10 max-w-2xl mx-auto">Watch how our freemium previews, custom programming platform, and tutoring modules help you build better circuits.</p>
+                <div class="aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900 flex items-center justify-center relative">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="ElectroHub Platform Introduction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="max-w-7xl mx-auto px-6 py-24">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <span class="text-sm text-cyan-400 tracking-wider font-bold uppercase">Our Projects</span>
+                    <h2 class="text-3xl sm:text-4xl font-black">Freemium Project Library</h2>
+                </div>
+                <p class="text-slate-400 text-sm hidden sm:block">Filter by architecture: <span class="text-indigo-400 ml-2">ESP32</span> <span class="text-cyan-400 ml-2">Raspberry Pi</span></p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-slate-700 transition relative">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs bg-green-500/10 text-green-400 font-bold px-2 py-0.5 rounded-full border border-green-500/20">Free Preview</span>
+                            <span class="text-xs text-slate-500">ESP32</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">IoT Environmental Monitor</h3>
+                        <p class="text-slate-400 text-sm mb-6">Build a connected weather station using the ESP32 and DHT11 temperature sensor with basic wiring diagrams.</p>
+                        <ul class="space-y-2 text-xs text-slate-300 mb-6 border-t border-slate-800 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-400"></i> Full Part List & Schematic</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-400"></i> Pinout Diagrams</li>
+                        </ul>
+                    </div>
+                    <button onclick="openModal('signupModal')" class="w-full bg-slate-800 hover:bg-slate-700 text-sm py-3 rounded-xl transition text-center font-medium">View Preview</button>
+                </div>
+
+                <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-slate-700 transition relative">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs bg-green-500/10 text-green-400 font-bold px-2 py-0.5 rounded-full border border-green-500/20">Free Preview</span>
+                            <span class="text-xs text-slate-500">Raspberry Pi</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">MicroPython BLE Controller</h3>
+                        <p class="text-slate-400 text-sm mb-6">Create a peripheral device with a Raspberry Pi and basic logic boards without extra libraries.</p>
+                        <ul class="space-y-2 text-xs text-slate-300 mb-6 border-t border-slate-800 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-400"></i> Module Overview</li>
+                            <li class="flex items-center gap-2 text-slate-500"><i class="fa-solid fa-lock text-slate-600"></i> Full Wiring Instruction</li>
+                        </ul>
+                    </div>
+                    <button onclick="openModal('signupModal')" class="w-full bg-slate-800 hover:bg-slate-700 text-sm py-3 rounded-xl transition text-center font-medium">View Preview</button>
+                </div>
+
+                <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-indigo-900/50 transition relative overflow-hidden">
+                    <div class="absolute inset-0 bg-slate-950/90 backdrop-blur-xs flex flex-col items-center justify-center p-8 text-center z-10">
+                        <i class="fa-solid fa-lock text-3xl text-indigo-400 mb-4"></i>
+                        <h4 class="text-lg font-bold mb-2">Premium Subscription Required</h4>
+                        <p class="text-slate-400 text-xs mb-6">Unlock all schematics, code libraries, and direct assistance for the Smart Automated Home System.</p>
+                        <button onclick="openModal('signupModal')" class="bg-indigo-600 hover:bg-indigo-500 text-xs font-bold px-6 py-3 rounded-xl shadow-lg transition">Subscribe to Unlock</button>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs bg-indigo-500/10 text-indigo-400 font-bold px-2 py-0.5 rounded-full border border-indigo-500/20">Premium</span>
+                            <span class="text-xs text-slate-500">ESP32</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Smart Automated Home System</h3>
+                        <p class="text-slate-400 text-sm mb-6">A production system featuring relay switches, PIR motion sensors, and I2C LCD displays.</p>
+                    </div>
+                    <div class="w-full bg-slate-800/50 text-xs text-slate-500 py-3 rounded-xl text-center">Hidden content</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="code-request" class="bg-gradient-to-b from-indigo-950/20 to-slate-950 py-24 border-y border-slate-900">
+            <div class="max-w-3xl mx-auto px-6">
+                <div class="text-center mb-10">
+                    <span class="text-sm text-indigo-400 tracking-wider font-bold uppercase">Custom Code Assistance</span>
+                    <h2 class="text-3xl sm:text-4xl font-black mt-2 mb-4">Need Custom Code for Your Project?</h2>
+                    <p class="text-slate-400 text-sm max-w-xl mx-auto">Submit your microcontroller and sensor specs below to get custom code and hardware logic written by an expert.</p>
+                </div>
+
+                <form onsubmit="handleCodeRequest(event)" class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-6">
+                    <div>
+                        <label for="project-title" class="block text-sm font-medium text-slate-300 mb-2">Project Name</label>
+                        <input type="text" id="project-title" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500 transition" placeholder="e.g., ESP32 BLE Door Lock">
+                    </div>
+                    <div>
+                        <label for="components" class="block text-sm font-medium text-slate-300 mb-2">Microcontrollers and Sensors Used</label>
+                        <input type="text" id="components" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500 transition" placeholder="e.g., ESP32, Servo Motor, LCD">
+                    </div>
+                    <div>
+                        <label for="logic-description" class="block text-sm font-medium text-slate-300 mb-2">Hardware Logic Description</label>
+                        <textarea id="logic-description" required rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500 transition" placeholder="Explain the action needed..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-4 rounded-xl font-bold shadow-lg shadow-indigo-500/20 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Code Request
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section id="tutoring" class="max-w-7xl mx-auto px-6 py-24 flex flex-col lg:flex-row items-center justify-between gap-12">
+            <div class="max-w-xl">
+                <span class="text-sm text-cyan-400 tracking-wider font-bold uppercase">1-on-1 Guidance</span>
+                <h2 class="text-3xl sm:text-4xl font-black mt-2 mb-6">Personal Tutoring and Live Troubleshooting</h2>
+                <p class="text-slate-400 mb-8">Stuck on a circuit or debugging an issue? Schedule a personalized online tutoring and troubleshooting session.</p>
+                <button onclick="openModal('tutoringModal')" class="bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-black px-8 py-4 rounded-xl shadow-lg shadow-cyan-500/10 transition">Book a Tutoring Session</button>
+            </div>
+            <div class="w-full max-w-lg bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-xl">
+                <h3 class="font-bold text-lg mb-6">Tutor Availability Dashboard</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <div>
+                            <h4 class="text-sm font-bold">Standard Consultation (30 min)</h4>
+                            <p class="text-xs text-slate-400 mt-0.5"><i class="fa-regular fa-calendar-check mr-2 text-cyan-400"></i> Available Mon, Wed, Fri</p>
+                        </div>
+                        <span class="text-sm text-indigo-400 font-bold">$25</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <div>
+                            <h4 class="text-sm font-bold">Live Debug Session (60 min)</h4>
+                            <p class="text-xs text-slate-400 mt-0.5"><i class="fa-regular fa-calendar-check mr-2 text-indigo-400"></i> Scheduled Project Troubleshooting</p>
+                        </div>
+                        <span class="text-sm text-indigo-400 font-bold">$45</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="border-t border-slate-900 py-12 text-center text-xs text-slate-600">
+            <p>&copy; 2026 ElectroHub Platform. All rights reserved.</p>
+        </footer>
+    </div>
+
+
+    <div id="dashboardView" class="hidden min-h-screen bg-slate-950 flex flex-col md:flex-row">
+        
+        <aside class="w-full md:w-64 border-r border-slate-900 bg-slate-900/40 p-6 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center space-x-3 mb-10">
+                    <i class="fa-solid fa-microchip text-indigo-500 text-2xl"></i>
+                    <span class="font-bold text-xl tracking-tight text-white">ElectroHub</span>
+                </div>
+                <nav class="space-y-2">
+                    <button onclick="switchTab('dashboardOverview')" id="btn-dashboardOverview" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold bg-indigo-600 text-white transition">
+                        <i class="fa-solid fa-chart-pie w-5"></i> Dashboard
+                    </button>
+                    <button onclick="switchTab('dashboardCourses')" id="btn-dashboardCourses" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-400 hover:bg-slate-900 hover:text-white transition">
+                        <i class="fa-solid fa-graduation-cap w-5"></i> Courses
+                    </button>
+                    <button onclick="switchTab('dashboardProjects')" id="btn-dashboardProjects" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-400 hover:bg-slate-900 hover:text-white transition">
+                        <i class="fa-solid fa-book-open w-5"></i> My Library
+                    </button>
+                    <button onclick="switchTab('dashboardRequests')" id="btn-dashboardRequests" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-400 hover:bg-slate-900 hover:text-white transition">
+                        <i class="fa-solid fa-code w-5"></i> Custom Code
+                    </button>
+                    <button onclick="switchTab('dashboardTutoring')" id="btn-dashboardTutoring" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-400 hover:bg-slate-900 hover:text-white transition">
+                        <i class="fa-solid fa-user-graduate w-5"></i> Tutoring
+                    </button>
+                    <button onclick="switchTab('dashboardSettings')" id="btn-dashboardSettings" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-400 hover:bg-slate-900 hover:text-white transition">
+                        <i class="fa-solid fa-sliders w-5"></i> Settings
+                    </button>
+                </nav>
+            </div>
+            <div>
+                <div class="p-4 bg-slate-900/40 border border-slate-800 rounded-2xl mb-6">
+                    <span class="text-xs font-black text-indigo-400 uppercase tracking-wider">Active Plan</span>
+                    <p class="text-sm font-bold mt-1">Premium Member</p>
+                </div>
+                <button onclick="logout()" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-rose-400 hover:bg-rose-500/10 transition">
+                    <i class="fa-solid fa-right-from-bracket w-5"></i> Log Out
+                </button>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-8 md:p-12 overflow-y-auto">
+
+            <section id="dashboardOverview" class="tab-content space-y-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                    <div>
+                        <h1 class="text-2xl sm:text-4xl font-black">Welcome back, <span id="studentName">Student</span>!</h1>
+                        <p class="text-slate-400 text-sm mt-1">Here is the summary of your coursework and requests.</p>
+                    </div>
+                    <button onclick="switchTab('dashboardRequests')" class="bg-indigo-600 hover:bg-indigo-500 text-sm font-bold px-5 py-3 rounded-xl shadow transition">+ Request New Code</button>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                        <span class="text-xs text-slate-400 uppercase tracking-wider">Completed Projects</span>
+                        <p class="text-3xl font-black mt-2 text-cyan-400">4</p>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                        <span class="text-xs text-slate-400 uppercase tracking-wider">Pending Code Requests</span>
+                        <p class="text-3xl font-black mt-2 text-indigo-400">1</p>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                        <span class="text-xs text-slate-400 uppercase tracking-wider">Tutoring Hours</span>
+                        <p class="text-3xl font-black mt-2 text-emerald-400">1.5 hrs</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                        <h3 class="font-bold text-lg mb-4">Recent Premium Lesson</h3>
+                        <div class="aspect-video bg-slate-950 rounded-xl mb-4 border border-slate-800 flex items-center justify-center">
+                            <i class="fa-solid fa-circle-play text-4xl text-indigo-500"></i>
+                        </div>
+                        <h4 class="font-bold text-sm">ESP32 Deep Sleep Implementation</h4>
+                        <p class="text-xs text-slate-400 mt-1">Learn how to manage power consumption while maintaining sensor readings.</p>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                        <h3 class="font-bold text-lg mb-4">Upcoming Schedule</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between bg-slate-950 p-4 rounded-xl border border-slate-800">
+                                <div>
+                                    <span class="text-xs text-indigo-400 font-bold">1-ON-1 SESSION</span>
+                                    <h4 class="text-sm font-bold mt-0.5">Circuit Wiring & Multi-meter Check</h4>
+                                    <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar mr-1"></i> May 5, 2026 - 18:00 WAT</p>
+                                </div>
+                                <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2.5 py-1 rounded-lg">Scheduled</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="dashboardCourses" class="tab-content hidden space-y-8">
+                <div>
+                    <h1 class="text-2xl font-black">Course Catalog</h1>
+                    <p class="text-slate-400 text-sm mt-1">Search through our full catalog of 50 hardware and programming modules.</p>
+                </div>
+
+                <div class="relative max-w-lg">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-500"></i>
+                    <input type="text" id="courseSearch" onkeyup="filterCourses()" placeholder="Search courses by name or hardware (e.g. ESP32, Arduino)..." 
+                           class="w-full bg-slate-900 border border-slate-800 rounded-xl pl-12 pr-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="coursesGrid">
+                    
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Automated Plant Watering System</h3>
+                            <p class="text-slate-400 text-xs mb-6">Uses a soil moisture sensor to drive a water pump when the soil gets too dry.</p>
+                        </div>
+                        <button onclick="alert('Accessing Automated Plant Watering System');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Ultrasonic Radar System</h3>
+                            <p class="text-slate-400 text-xs mb-6">Uses an ultrasonic sensor on a servo motor, displaying objects on a PC screen via Processing.</p>
+                        </div>
+                        <button onclick="alert('Accessing Ultrasonic Radar System');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Bluetooth-Controlled RC Car</h3>
+                            <p class="text-slate-400 text-xs mb-6">Moves via commands sent from a smartphone app over an HC-05 Bluetooth module.</p>
+                        </div>
+                        <button onclick="alert('Accessing Bluetooth-Controlled RC Car');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">RFID Security Access System</h3>
+                            <p class="text-slate-400 text-xs mb-6">Grants entry using an RC522 RFID reader/tag and a servo motor.</p>
+                        </div>
+                        <button onclick="alert('Accessing RFID Security Access System');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">DHT11 Weather Station</h3>
+                            <p class="text-slate-400 text-xs mb-6">Reads temperature and humidity, displaying values on an I2C LCD screen.</p>
+                        </div>
+                        <button onclick="alert('Accessing DHT11 Weather Station');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Digital Alarm Clock with RTC</h3>
+                            <p class="text-slate-400 text-xs mb-6">Uses a DS3231 Real-Time Clock module and buzzer for alarms.</p>
+                        </div>
+                        <button onclick="alert('Accessing Digital Alarm Clock with RTC');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Line-Following Robot</h3>
+                            <p class="text-slate-400 text-xs mb-6">Uses TCRT5000 IR sensors to follow a black line on a white surface.</p>
+                        </div>
+                        <button onclick="alert('Accessing Line-Following Robot');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Solar Tracking System</h3>
+                            <p class="text-slate-400 text-xs mb-6">Uses LDR sensors to adjust the angle of a solar panel using micro-servos.</p>
+                        </div>
+                        <button onclick="alert('Accessing Solar Tracking System');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Arduino Electronic Piano</h3>
+                            <p class="text-slate-400 text-xs mb-6">Uses a piezo buzzer and push buttons to play musical notes.</p>
+                        </div>
+                        <button onclick="alert('Accessing Arduino Electronic Piano');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Pulse/Heart Rate Monitor</h3>
+                            <p class="text-slate-400 text-xs mb-6">Reads a pulse sensor and displays the BPM on an OLED display.</p>
+                        </div>
+                        <button onclick="alert('Accessing Pulse/Heart Rate Monitor');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Smart Dustbin</h3>
+                            <p class="text-slate-400 text-xs mb-6">Uses an ultrasonic sensor to automatically open and close a trash bin lid via a servo.</p>
+                        </div>
+                        <button onclick="alert('Accessing Smart Dustbin');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Voice-Controlled Home Automation</h3>
+                            <p class="text-slate-400 text-xs mb-6">Uses an HC-05 Bluetooth module paired with an Android app for voice commands.</p>
+                        </div>
+                        <button onclick="alert('Accessing Voice-Controlled Home Automation');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Obstacle-Avoiding Robot</h3>
+                            <p class="text-slate-400 text-xs mb-6">Changes direction when the ultrasonic sensor detects an obstacle in its path.</p>
+                        </div>
+                        <button onclick="alert('Accessing Obstacle-Avoiding Robot');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Data Logger with SD Card</h3>
+                            <p class="text-slate-400 text-xs mb-6">Saves temperature and pressure sensor data continuously onto an SD card module.</p>
+                        </div>
+                        <button onclick="alert('Accessing Data Logger with SD Card');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Digital LUX Meter</h3>
+                            <p class="text-slate-400 text-xs mb-6">Measures light intensity using a BH1750 sensor and an LCD.</p>
+                        </div>
+                        <button onclick="alert('Accessing Digital LUX Meter');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Contactless Thermometer</h3>
+                            <p class="text-slate-400 text-xs mb-6">Measures object temperature using an MLX90614 IR sensor without touching.</p>
+                        </div>
+                        <button onclick="alert('Accessing Contactless Thermometer');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">AC Light Dimmer</h3>
+                            <p class="text-slate-400 text-xs mb-6">Controls 220V lamp brightness using an Arduino, zero-crossing detector, and a TRIAC.</p>
+                        </div>
+                        <button onclick="alert('Accessing AC Light Dimmer');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Electronic Password Safe</h3>
+                            <p class="text-slate-400 text-xs mb-6">A security box that requires a 4-digit password entered via a 4x4 keypad.</p>
+                        </div>
+                        <button onclick="alert('Accessing Electronic Password Safe');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Ultrasonic Parking Assistant</h3>
+                            <p class="text-slate-400 text-xs mb-6">Blinks LEDs and sounds a buzzer progressively closer to an obstacle.</p>
+                        </div>
+                        <button onclick="alert('Accessing Ultrasonic Parking Assistant');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="arduino">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-500 font-bold px-2 py-0.5 rounded-full border border-amber-500/20">Arduino</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Color Sorting Machine</h3>
+                            <p class="text-slate-400 text-xs mb-6">Uses a TCS3200 sensor and servo motors to separate colored objects into different bins.</p>
+                        </div>
+                        <button onclick="alert('Accessing Color Sorting Machine');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">ESP32 Web Server</h3>
+                            <p class="text-slate-400 text-xs mb-6">Hosts a built-in webpage to toggle LEDs or relays directly over Wi-Fi.</p>
+                        </div>
+                        <button onclick="alert('Accessing ESP32 Web Server');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">IoT Dashboard on ThingSpeak</h3>
+                            <p class="text-slate-400 text-xs mb-6">Pushes sensor data to an online dashboard accessible from anywhere.</p>
+                        </div>
+                        <button onclick="alert('Accessing ThingSpeak');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">ESP32-CAM Surveillance Camera</h3>
+                            <p class="text-slate-400 text-xs mb-6">Streams live video over the local Wi-Fi network.</p>
+                        </div>
+                        <button onclick="alert('Accessing ESP32-CAM Surveillance Camera');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Telegram Smart Home Bot</h3>
+                            <p class="text-slate-400 text-xs mb-6">Toggles relays based on messages received from the Telegram app.</p>
+                        </div>
+                        <button onclick="alert('Accessing Telegram Smart Home Bot');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Smart Weather Data Collector</h3>
+                            <p class="text-slate-400 text-xs mb-6">Retrieves weather parameters and uploads to an IoT analytics platform.</p>
+                        </div>
+                        <button onclick="alert('Accessing Smart Weather Data Collector');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Micro-Web Server with WebSocket</h3>
+                            <p class="text-slate-400 text-xs mb-6">Enables real-time, low-latency device control without page refreshes.</p>
+                        </div>
+                        <button onclick="alert('Accessing Micro-Web Server with WebSocket');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Cloud-Based RFID Attendance System</h3>
+                            <p class="text-slate-400 text-xs mb-6">Sends scanned RFID data to a Google Sheet using webhooks.</p>
+                        </div>
+                        <button onclick="alert('Accessing Cloud-Based RFID Attendance System');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Smart Plug with Energy Monitor</h3>
+                            <p class="text-slate-400 text-xs mb-6">Measures current using an ACS712 sensor and publishes the reading to an MQTT broker.</p>
+                        </div>
+                        <button onclick="alert('Accessing Smart Plug with Energy Monitor');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Wi-Fi Packet Sniffer</h3>
+                            <p class="text-slate-400 text-xs mb-6">Monitors MAC addresses to detect devices in the vicinity.</p>
+                        </div>
+                        <button onclick="alert('Accessing Wi-Fi Packet Sniffer');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Voice-Controlled Relays (Alexa)</h3>
+                            <p class="text-slate-400 text-xs mb-6">Uses the fauxmoESP library to turn connected appliances on via Alexa.</p>
+                        </div>
+                        <button onclick="alert('Accessing Voice-Controlled Relays');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Internet Wi-Fi Radio</h3>
+                            <p class="text-slate-400 text-xs mb-6">Streams online radio stations using an ESP32 and an audio module.</p>
+                        </div>
+                        <button onclick="alert('Accessing Internet Wi-Fi Radio');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">BLE Beacons Scanner</h3>
+                            <p class="text-slate-400 text-xs mb-6">Scans and logs Bluetooth Low Energy (BLE) tags in range.</p>
+                        </div>
+                        <button onclick="alert('Accessing BLE Beacons Scanner');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">GPS Asset Tracker</h3>
+                            <p class="text-slate-400 text-xs mb-6">Publishes GPS coordinates to an online mapping API over an ESP8266.</p>
+                        </div>
+                        <button onclick="alert('Accessing GPS Asset Tracker');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">E-Paper Real-Time Stock Ticker</h3>
+                            <p class="text-slate-400 text-xs mb-6">Pulls financial data and displays it on a low-power E-Ink display.</p>
+                        </div>
+                        <button onclick="alert('Accessing E-Paper Real-Time Stock Ticker');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">OTA Update System</h3>
+                            <p class="text-slate-400 text-xs mb-6">Uploads new programs to the board over Wi-Fi without a USB cable.</p>
+                        </div>
+                        <button onclick="alert('Accessing OTA Update System');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Real-Time Crypto Ticker</h3>
+                            <p class="text-slate-400 text-xs mb-6">Displays the current price of major cryptocurrencies on an OLED screen.</p>
+                        </div>
+                        <button onclick="alert('Accessing Real-Time Crypto Ticker');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Smart Notification Indicator</h3>
+                            <p class="text-slate-400 text-xs mb-6">Blinks a Neopixel ring when you receive specific emails or notifications.</p>
+                        </div>
+                        <button onclick="alert('Accessing Smart Notification Indicator');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Environmental LoRa Gateway</h3>
+                            <p class="text-slate-400 text-xs mb-6">Receives data from remote LoRa sensors and relays it to an MQTT server.</p>
+                        </div>
+                        <button onclick="alert('Accessing Environmental LoRa Gateway');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Wi-Fi Deauther</h3>
+                            <p class="text-slate-400 text-xs mb-6">Scans and disconnects unauthorized devices from a selected local network.</p>
+                        </div>
+                        <button onclick="alert('Accessing Wi-Fi Deauther');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="esp esp32">
+                        <div>
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">ESP</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Plant Monitoring with Alerts</h3>
+                            <p class="text-slate-400 text-xs mb-6">Sends an email notification if the soil is too dry or temperature is too high.</p>
+                        </div>
+                        <button onclick="alert('Accessing Plant Monitoring with Alerts');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="raspberry pi micropython linux">
+                        <div>
+                            <span class="text-xs bg-red-500/10 text-red-400 font-bold px-2 py-0.5 rounded-full border border-red-500/20">Raspberry Pi</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Retro Gaming Console (RetroPie)</h3>
+                            <p class="text-slate-400 text-xs mb-6">Transforms your Raspberry Pi into an emulator for classic arcade games.</p>
+                        </div>
+                        <button onclick="alert('Accessing Retro Gaming Console');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="raspberry pi micropython linux">
+                        <div>
+                            <span class="text-xs bg-red-500/10 text-red-400 font-bold px-2 py-0.5 rounded-full border border-red-500/20">Raspberry Pi</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Network-Wide Ad Blocker (Pi-hole)</h3>
+                            <p class="text-slate-400 text-xs mb-6">Protects all network-connected devices from trackers and ads.</p>
+                        </div>
+                        <button onclick="alert('Accessing Pi-hole');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="raspberry pi micropython linux">
+                        <div>
+                            <span class="text-xs bg-red-500/10 text-red-400 font-bold px-2 py-0.5 rounded-full border border-red-500/20">Raspberry Pi</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Personal NAS</h3>
+                            <p class="text-slate-400 text-xs mb-6">Turns a flash drive into a shared network drive across your home.</p>
+                        </div>
+                        <button onclick="alert('Accessing Personal NAS');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="raspberry pi micropython linux">
+                        <div>
+                            <span class="text-xs bg-red-500/10 text-red-400 font-bold px-2 py-0.5 rounded-full border border-red-500/20">Raspberry Pi</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Magic Mirror</h3>
+                            <p class="text-slate-400 text-xs mb-6">Displays a clock, weather, and news widgets behind a two-way glass mirror.</p>
+                        </div>
+                        <button onclick="alert('Accessing Magic Mirror');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="raspberry pi micropython linux">
+                        <div>
+                            <span class="text-xs bg-red-500/10 text-red-400 font-bold px-2 py-0.5 rounded-full border border-red-500/20">Raspberry Pi</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Home Automation Hub</h3>
+                            <p class="text-slate-400 text-xs mb-6">Integrates different smart home devices on a local server using Home Assistant.</p>
+                        </div>
+                        <button onclick="alert('Accessing Home Automation Hub');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="raspberry pi micropython linux">
+                        <div>
+                            <span class="text-xs bg-red-500/10 text-red-400 font-bold px-2 py-0.5 rounded-full border border-red-500/20">Raspberry Pi</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Timelapse Camera Station</h3>
+                            <p class="text-slate-400 text-xs mb-6">Captures beautiful, high-definition timelapse videos with a Pi Camera module.</p>
+                        </div>
+                        <button onclick="alert('Accessing Timelapse Camera Station');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="raspberry pi micropython linux">
+                        <div>
+                            <span class="text-xs bg-red-500/10 text-red-400 font-bold px-2 py-0.5 rounded-full border border-red-500/20">Raspberry Pi</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Personal Web Server</h3>
+                            <p class="text-slate-400 text-xs mb-6">Hosts personal web pages locally or connects to a free dynamic DNS service.</p>
+                        </div>
+                        <button onclick="alert('Accessing Personal Web Server');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="raspberry pi micropython linux">
+                        <div>
+                            <span class="text-xs bg-red-500/10 text-red-400 font-bold px-2 py-0.5 rounded-full border border-red-500/20">Raspberry Pi</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">VPN Gateway</h3>
+                            <p class="text-slate-400 text-xs mb-6">Allows secure, private internet routing while connected to public Wi-Fi networks.</p>
+                        </div>
+                        <button onclick="alert('Accessing VPN Gateway');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="raspberry pi micropython linux">
+                        <div>
+                            <span class="text-xs bg-red-500/10 text-red-400 font-bold px-2 py-0.5 rounded-full border border-red-500/20">Raspberry Pi</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Automated Pet Feeder</h3>
+                            <p class="text-slate-400 text-xs mb-6">Dispenses pet food on a schedule utilizing a stepper motor driver.</p>
+                        </div>
+                        <button onclick="alert('Accessing Automated Pet Feeder');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                    <div class="course-card bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between" data-category="raspberry pi micropython linux">
+                        <div>
+                            <span class="text-xs bg-red-500/10 text-red-400 font-bold px-2 py-0.5 rounded-full border border-red-500/20">Raspberry Pi</span>
+                            <h3 class="text-lg font-bold mt-4 mb-2">Desktop Computer Replacement</h3>
+                            <p class="text-slate-400 text-xs mb-6">Uses the native Raspberry Pi OS and graphical environment for daily computing tasks.</p>
+                        </div>
+                        <button onclick="alert('Accessing Desktop Computer Replacement');" class="w-full bg-slate-800 hover:bg-slate-700 text-xs py-2.5 rounded-xl transition text-center font-bold">Start Course</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="dashboardProjects" class="tab-content hidden space-y-8">
+                <div>
+                    <h1 class="text-2xl font-black">My Library</h1>
+                    <p class="text-slate-400 text-sm mt-1">Access all your subscribed modules, tutorials, and circuit files.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                        <span class="text-xs bg-indigo-500/10 text-indigo-400 font-bold px-2 py-0.5 rounded-full border border-indigo-500/20">Unlocked</span>
+                        <h3 class="text-lg font-bold mt-4 mb-2">Smart Automated Home System</h3>
+                        <p class="text-slate-400 text-xs mb-6">Complete schematic containing relay switches, motion sensors, and I2C LCD displays.</p>
+                        <a href="#" class="block text-center w-full bg-indigo-600 hover:bg-indigo-500 text-xs text-white font-bold py-2.5 rounded-xl transition">Access Schematics</a>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                        <span class="text-xs bg-indigo-500/10 text-indigo-400 font-bold px-2 py-0.5 rounded-full border border-indigo-500/20">Unlocked</span>
+                        <h3 class="text-lg font-bold mt-4 mb-2">ESP32 IoT Weather Station</h3>
+                        <p class="text-slate-400 text-xs mb-6">Display metrics online with custom data logging logic files.</p>
+                        <a href="#" class="block text-center w-full bg-indigo-600 hover:bg-indigo-500 text-xs text-white font-bold py-2.5 rounded-xl transition">Access Schematics</a>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                        <span class="text-xs bg-cyan-500/10 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/20">Bonus</span>
+                        <h3 class="text-lg font-bold mt-4 mb-2">Arduino Library Integrations</h3>
+                        <p class="text-slate-400 text-xs mb-6">Download custom written classes and functions for microcontrollers.</p>
+                        <a href="#" class="block text-center w-full bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 font-bold py-2.5 rounded-xl transition border border-slate-700">Download Library</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="dashboardRequests" class="tab-content hidden space-y-8">
+                <div>
+                    <h1 class="text-2xl font-black">Custom Code Request</h1>
+                    <p class="text-slate-400 text-sm mt-1">Review the status of your microcontroller's logic requests or submit a new one.</p>
+                </div>
+
+                <form onsubmit="addCodeRequest(event)" class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-6">
+                    <div>
+                        <label for="db-project-title" class="block text-sm font-medium text-slate-300 mb-2">Project Title</label>
+                        <input type="text" id="db-project-title" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500" placeholder="e.g., Raspberry Pi Temperature Relay">
+                    </div>
+                    <div>
+                        <label for="db-components" class="block text-sm font-medium text-slate-300 mb-2">Parts / Sensors</label>
+                        <input type="text" id="db-components" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500" placeholder="e.g., Raspberry Pi 4, Relay Module, DHT22">
+                    </div>
+                    <div>
+                        <label for="db-logic" class="block text-sm font-medium text-slate-300 mb-2">Describe Hardware Logic</label>
+                        <textarea id="db-logic" required rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500" placeholder="Detailed functionality description..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-xl font-bold text-sm">Submit New Logic Request</button>
+                </form>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden mt-8">
+                    <div class="p-6 border-b border-slate-800">
+                        <h3 class="font-bold text-lg">Request History</h3>
+                    </div>
+                    <div class="divide-y divide-slate-800">
+                        <div class="p-6 flex justify-between items-center">
+                            <div>
+                                <h4 class="text-sm font-bold">ESP32 BLE Door Lock</h4>
+                                <p class="text-xs text-slate-400 mt-1">Components: ESP32, Servo Motor, LCD</p>
+                            </div>
+                            <span class="text-xs bg-amber-500/10 text-amber-400 font-bold px-2.5 py-1 rounded-full">In Progress</span>
+                        </div>
+                    </div>
+                    <div class="divide-y divide-slate-800" id="newRequestsContainer"></div>
+                </div>
+            </section>
+
+            <section id="dashboardTutoring" class="tab-content hidden space-y-8">
+                <div>
+                    <h1 class="text-2xl font-black">Tutoring and Troubleshooting</h1>
+                    <p class="text-slate-400 text-sm mt-1">Book new sessions or review your prerequisite hardware checklists.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                        <h3 class="font-bold text-lg mb-4">Book New Session</h3>
+                        <form onsubmit="handleDBBooking(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1" for="db-t-type">Select Session Type</label>
+                                <select id="db-t-type" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 text-slate-300">
+                                    <option>Consultation Session ($25 / 30 min)</option>
+                                    <option>Debugging Session ($45 / 60 min)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1" for="db-t-date">Date & Time</label>
+                                <input type="datetime-local" id="db-t-date" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 text-slate-300">
+                            </div>
+                            <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold py-3 rounded-xl text-sm mt-4">Confirm Booking</button>
+                        </form>
+                    </div>
+                    
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                        <h3 class="font-bold text-lg mb-4">Required Hardware Checklist</h3>
+                        <p class="text-xs text-slate-400 mb-6">Before scheduling, make sure you have the following test equipment available:</p>
+                        <ul class="space-y-3 text-sm text-slate-300">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-cyan-400"></i> Variable Bench Power Supply</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-cyan-400"></i> Digital Multimeter & Test Leads</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-cyan-400"></i> TTL to USB Serial Debug Converter</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="dashboardSettings" class="tab-content hidden space-y-8">
+                <div>
+                    <h1 class="text-2xl font-black">Settings</h1>
+                    <p class="text-slate-400 text-sm mt-1">Manage your account details and password information.</p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 max-w-2xl space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Display Name</label>
+                        <input type="text" id="settings-name" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500" value="Student">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
+                        <input type="email" id="settings-email" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500" value="student@electrohub.local">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Update Password</label>
+                        <input type="password" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500" placeholder="Leave blank to keep unchanged">
+                    </div>
+                    <button onclick="updateSettings()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-bold text-sm transition">Save Information</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div id="signupModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 items-center justify-center hidden">
+        <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl w-full max-w-md mx-4 relative">
+            <button onclick="closeModal('signupModal')" class="absolute top-6 right-6 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <h3 class="text-2xl font-bold mb-2">Create Your Account</h3>
+            <p class="text-slate-400 text-sm mb-6">Sign up to access premium guides, custom code requests, and tutoring.</p>
+            
+            <form onsubmit="handleSignup(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1" for="su-name">Your Name</label>
+                    <input type="text" id="su-name" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1" for="su-email">Email Address</label>
+                    <input type="email" id="su-email" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1" for="su-password">Create Password</label>
+                    <input type="password" id="su-password" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500">
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-xl font-bold text-sm mt-4">Complete Registration</button>
+            </form>
+            <p class="text-center text-xs text-slate-500 mt-6">A 6-digit verification pin will be sent to your email upon sign-up.</p>
+        </div>
+    </div>
+
+    <div id="loginModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 items-center justify-center hidden">
+        <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl w-full max-w-md mx-4 relative">
+            <button onclick="closeModal('loginModal')" class="absolute top-6 right-6 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <h3 class="text-2xl font-bold mb-2">Welcome Back</h3>
+            <p class="text-slate-400 text-sm mb-6">Log in to view pending code requests and tutorials.</p>
+            
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1" for="li-email">Email Address</label>
+                    <input type="email" id="li-email" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1" for="li-password">Password</label>
+                    <input type="password" id="li-password" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500">
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-xl font-bold text-sm mt-4">Log In</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="tutoringModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 items-center justify-center hidden">
+        <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl w-full max-w-md mx-4 relative">
+            <button onclick="closeModal('tutoringModal')" class="absolute top-6 right-6 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <h3 class="text-2xl font-bold mb-2">Book a Tutoring Session</h3>
+            <p class="text-slate-400 text-sm mb-6">Complete your student settings to select a session date.</p>
+            
+            <form onsubmit="handleBooking(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1" for="t-type">Select Session Type</label>
+                    <select id="t-type" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 text-slate-300">
+                        <option>Consultation Session ($25 / 30m)</option>
+                        <option>Debugging & Schematics ($45 / 60m)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1" for="t-date">Preferred Date & Time</label>
+                    <input type="datetime-local" id="t-date" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 text-slate-300">
+                </div>
+                <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-500 text-slate-950 py-3 rounded-xl font-black text-sm mt-4">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+            document.getElementById(id).classList.add('flex');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+            document.getElementById(id).classList.remove('flex');
+        }
+
+        // Authentication Methods
+        function handleSignup(event) {
+            event.preventDefault();
+            alert('Registration received! A 6-digit verification code has been sent to your email.');
+            closeModal('signupModal');
+            loginUser('Student'); // Redirect to dashboard
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            closeModal('loginModal');
+            loginUser('Student');
+        }
+
+        function loginUser(name) {
+            document.getElementById('landingView').classList.add('hidden');
+            document.getElementById('dashboardView').classList.remove('hidden');
+            document.getElementById('studentName').innerText = name;
+            document.getElementById('settings-name').value = name;
+            switchTab('dashboardOverview');
+        }
+
+        function logout() {
+            document.getElementById('dashboardView').classList.add('hidden');
+            document.getElementById('landingView').classList.remove('hidden');
+        }
+
+        function switchTab(tabId) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.add('hidden'));
+
+            // Show target tab
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Reset buttons styling in sidebar
+            const buttons = document.querySelectorAll('aside nav button');
+            buttons.forEach(btn => {
+                btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-400 hover:bg-slate-900 hover:text-white transition";
+            });
+
+            // Highlight active button
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold bg-indigo-600 text-white transition";
+            }
+        }
+
+        // Search Engine
+        function filterCourses() {
+            const input = document.getElementById('courseSearch').value.toLowerCase();
+            const cards = document.querySelectorAll('.course-card');
+
+            cards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const text = card.querySelector('p').innerText.toLowerCase();
+
+                if (category.includes(input) || title.includes(input) || text.includes(input)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        function handleCodeRequest(event) {
+            event.preventDefault();
+            alert('Custom code request sent! Please sign up or log in to track its status.');
+            document.getElementById('project-title').value = '';
+            document.getElementById('components').value = '';
+            document.getElementById('logic-description').value = '';
+            openModal('signupModal');
+        }
+
+        function addCodeRequest(event) {
+            event.preventDefault();
+            const title = document.getElementById('db-project-title').value;
+            const components = document.getElementById('db-components').value;
+            
+            const container = document.getElementById('newRequestsContainer');
+            container.innerHTML += `
+                <div class="p-6 flex justify-between items-center">
+                    <div>
+                        <h4 class="text-sm font-bold">${title}</h4>
+                        <p class="text-xs text-slate-400 mt-1">Components: ${components}</p>
+                    </div>
+                    <span class="text-xs bg-indigo-500/10 text-indigo-400 font-bold px-2.5 py-1 rounded-full">Submitted</span>
+                </div>
+            `;
+            alert('Your Custom Code Request has been sent to our development queue!');
+            
+            // Clear fields
+            document.getElementById('db-project-title').value = '';
+            document.getElementById('db-components').value = '';
+            document.getElementById('db-logic').value = '';
+        }
+
+        function handleDBBooking(event) {
+            event.preventDefault();
+            alert('Tutoring session booked successfully!');
+            closeModal('tutoringModal');
+            switchTab('dashboardOverview');
+        }
+
+        function handleBooking(event) {
+            event.preventDefault();
+            alert('Booking request sent successfully!');
+            closeModal('tutoringModal');
+        }
+
+        function updateSettings() {
+            const name = document.getElementById('settings-name').value;
+            document.getElementById('studentName').innerText = name;
+            alert('Account settings updated successfully!');
+        }
+    </script>
+</body>
+</html>
