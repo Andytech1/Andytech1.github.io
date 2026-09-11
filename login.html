@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Log in — Department of Computer Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="9" y="9" width="22" height="22" rx="2" stroke="#3fa796" stroke-width="1.6"/>
+        <circle cx="20" cy="20" r="4" fill="#c17a3d"/>
+        <path d="M20 2V9M20 31V38M2 20H9M31 20H38M8 8L13 13M32 8L27 13M8 32L13 27M32 32L27 27" stroke="#3a4756" stroke-width="1.4"/>
+      </svg>
+      <span>Computer Engineering<small>Akwa Ibom State Polytechnic</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="register.html" class="btn btn-ghost">Register</a>
+    </nav>
+  </div>
+</header>
+
+<main class="auth-shell">
+  <div class="auth-card">
+
+    <!-- STEP 1: credentials -->
+    <div id="login-step">
+      <h1>Log in</h1>
+      <p class="lede">Choose how you sign in.</p>
+
+      <div id="login-banner" class="status-banner"></div>
+
+      <div class="login-tabs">
+        <button type="button" class="active" data-mode="student">Student</button>
+        <button type="button" data-mode="staff">Lecturer / HOD</button>
+      </div>
+
+      <form id="login-form">
+        <div class="field-group">
+          <label for="identifier" id="identifier-label">Registration number</label>
+          <input type="text" id="identifier" name="identifier" placeholder="e.g. CE/ND/24/0123" required />
+        </div>
+        <div class="field-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary btn-block" id="login-submit">Log in</button>
+          <span class="swap">New here? <a href="register.html">Create an account</a></span>
+        </div>
+      </form>
+    </div>
+
+    <!-- STEP 2: device OTP -->
+    <div id="otp-step" class="otp-step">
+      <h1>Verify this device</h1>
+      <p class="lede">We don't recognize this device. Enter the 6-digit code sent to your email.</p>
+      <div id="otp-banner" class="status-banner"></div>
+      <form id="otp-form">
+        <div class="field-group">
+          <label for="otp_code">Verification code</label>
+          <input type="text" id="otp_code" name="code" maxlength="6" inputmode="numeric" required />
+        </div>
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary btn-block">Verify and continue</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<script src="js/app.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>
